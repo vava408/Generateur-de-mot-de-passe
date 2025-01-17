@@ -1,31 +1,30 @@
-public class PassworldGenertor
+import iut.algo.*;
+
+public class Main
 {
-	public static String generatePassword(int longueur,int nombreDeMajuscule,int nombreDeCaratereSpeciale)
+	public static void main(String[] args)
 	{
-		int cpt;
-		String password;
+		int longueur;
+		int nombreDeMajuscule;
+		int nombreDeCaratereSpeciale;
 
-		password = "";
-		cpt = 0;
-		while(cpt < longueur)
+		System.out.println("Entrer une longueur de mot de passe");
+		longueur = Clavier.lire_int();
+		if(longueur > 0)
 		{
-			if(cpt < nombreDeMajuscule)
+			System.out.println("Entrer le nombre de majuscule");
+			nombreDeMajuscule = Clavier.lire_int();
+			if (nombreDeMajuscule > 0 && nombreDeMajuscule <= longueur -1)
 			{
-				password = password + (char) (65 + (int) (Math.random() * 26));
-			}
-			//caratre miniscule
-			else if(cpt < longueur - nombreDeCaratereSpeciale)
-			{
-				password = password + (char) (97 + (int) (Math.random() * 26));
-			}
-			else
-			{
-				password = password + (char) (33 + (int) (Math.random() * 15));
-			}
-			cpt = cpt + 1;
-		}
-
+				System.out.println("Entrer le nombre de caratere special");
+				nombreDeCaratereSpeciale = Clavier.lire_int();
+				
+				if(nombreDeCaratereSpeciale > 0 )
+				{
+					System.out.println(PassworldGenertor.generatePassword(longueur,nombreDeMajuscule,nombreDeCaratereSpeciale));
+				}
 		
-		return password;
+			}
+		}
 	}
 }
